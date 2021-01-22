@@ -1,0 +1,30 @@
+.heading-animated {
+	background: linear-gradient(
+		to right,
+		$color-primary-light,
+		$color-primary-dark
+	);
+	background-clip: text;
+	color: transparent;
+	display: inline-block;
+	letter-spacing: 2px;
+	font-weight: 700;
+	transition: all 0.2s ease;
+	text-transform: uppercase;
+	font-size: 2.5rem;
+
+	@include responsive(tab) {
+		font-size: 2rem;
+		letter-spacing: 0;
+	}
+
+	@include responsive(mob) {
+		letter-spacing: 1px;
+		font-size: 1.5rem;
+	}
+
+	&:hover {
+		transform: scale(1, 1) skewX(20deg) skewY(2deg);
+		text-shadow: $shadow-1;
+	}
+}

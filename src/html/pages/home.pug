@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Natours
+        link(rel="shortcut icon", href="../../img/favicon.png", type="image/x-icon")
+        link(rel="stylesheet", href="../../css/styles.css")
+    body
+        include ../layout/navbar
+        include ../layout/header
+        section.about
+            .about__wrapper--title
+                h2.about__title.heading-animated EXCITING TOURS FOR ADVENTUROUS PEOPLE
+            section.about__content
+                article.about__details
+                    -for(let i = 1; i <= 2; i += 1)
+                        div.about__wrapper--details
+                            h3.about__details--heading YOU'RE GOING TO FALL IN LOVE WITH NATURE
+                            p.about__details--content Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta maiores ducimus consequatur delectus alias voluptatibus expedita, dolor quae autem minima facere ipsum.
+                    a.sec-btn.about__btn(href="#") learn more &rarr;
+                figure.about__photos
+                    -for(let i = 1; i <= 3; i += 1)
+                        img(alt="nature picture", class=`about__pic about__pic--${i}`, srcset=`../../img/nat-${i}.jpg 300w, ../../img/nat-${i}-large.jpg 1000w`, sizes="(max-width: 900px) 30vw, (max-width:1200px) 40vw, 300px")
+
+        section.features: div.features__container
+            -const feature1 = {icon: "world", title: "EXPLORE THE WORLD"}
+            -const feature2 = {icon: "compass", title: "MEET NATURE"}
+            -const feature3 = {icon: "map2", title: "FIND YOUR WAY"}
+            -const feature4 = {icon: "heart", title: "LIVE A HEALTHIER LIFE"}
+            -const features = [feature1, feature2, feature3, feature4]
+            each feature in features
+                div: section.feature
+                    svg.feature__icon
+                        use(xlink:href=`../../img/symbol-defs.svg#icon-${feature.icon}`)
+                    h3.feature__title #{feature.title}
+                    p.feature__details Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta maiores ducimus consequatur delectus alias voluptatibus.
+
+        include ../component/cards
+
+        section.testimonials
+            .testimonials__wrapper--video
+                video(autoplay muted loop class="testimonials__video")
+                    source(src="../../img/video.mp4", type="video/mp4")
+                    source(src="../../img/video.webm", type="video/webm")
+            .testimonials__wrapper--heading
+                h2.testimonials__title.heading-animated we make people genuinely happy
+            -const client1 = {name: "mary smith", img: "8", title: "i had the best week ever with my family"}
+            -const client2 = {name: "jack wilson", img: "9", title: "WOW! MY LIFE IS COMPLETELY DIFFERENT NOW"}
+            -const clients = [client1, client2]
+            each client in clients
+                section.client
+                    figure.client__pic
+                        img(src=`../../img/nat-${client.img}.jpg`, alt="client" class="img-responsive client__img")
+                        figcaption.client__name #{client.name}
+                    article.client__comment
+                        h3.client__comment--title #{client.title}
+                        p.client__comment--details Lorem ipsum dolor sit amet conser adipisi elit. Dicta maiores ducimus consequar delectus alias volup. Lorem ipsum dolor sit amet consectetur adipisicing elit Dicta maiores ducimus consequatur delectus alias volupt. Lorem ipsum dolor sit amet consectetur adipisicing elit
+            .testimonials__wrapper--link
+                a.testimonials__link.sec-btn read all stories &rarr;
+
+        section.booking
+            .form__wrapper
+                form(action="#" class="form")
+                    .form__wrapper--heading
+                        h3.heading-animated.form__title start booking now
+                    .form__input--group
+                        input(type="text", name="name", class="form-animated form__input", id="name", placeholder="full name", required)
+                        label(for="name", class="label-animated form__input--label") full name
+                    .form__input--group
+                        input(type="email", name="email", class="form-animated form__input", id="email", placeholder="email", required)
+                        label(for="name", class="label-animated form__input--label") email address
+                    .form__radio--group
+                        .form__wrapper--radio
+                            input(type="radio", name="size" class="form__radio" id="small_size")
+                            label(for="small_size" class="label-normal form__radio--label")
+                                span.form__radio--btn
+                                |small tour group
+                        .form__wrapper--radio
+                            input(type="radio", name="size" class="form__radio" id="large_size")
+                            label(for="large_size" class="label-normal form__radio--label")
+                                span.form__radio--btn
+                                |large tour group
+                    .form__wrapper--link
+                        a.btn.btn__animated.form__btn next step &rarr;
+
+        include ../component/popup
+
+        include ../layout/footer

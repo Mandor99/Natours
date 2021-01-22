@@ -1,0 +1,75 @@
+.header {
+	height: 95vh;
+	background: linear-gradient(
+			to right bottom,
+			rgba($color-primary-light, 0.8),
+			rgba($color-primary-dark, 0.8)
+		),
+		url('../../img/hero-small.jpg') no-repeat center/cover;
+	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+	position: relative;
+	backface-visibility: hidden;
+
+	@include responsive(tab) {
+		clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+	}
+
+	@include imgRes {
+		background: linear-gradient(
+				to right bottom,
+				rgba($color-primary-light, 0.8),
+				rgba($color-primary-dark, 0.8)
+			),
+			url('../../img/hero.jpg') no-repeat center/cover;
+	}
+
+	&__logo {
+		padding: 2rem;
+		&--img {
+			$size: 5rem;
+			width: $size;
+		}
+	}
+	&__content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: $whiteColor;
+		text-align: center;
+
+		.wrapper {
+			margin-bottom: 3rem;
+			backface-visibility: hidden;
+		}
+	}
+	&__title {
+		text-transform: uppercase;
+		letter-spacing: 2.5rem;
+		font-size: 4.5rem;
+		font-weight: 500;
+		margin-bottom: 1rem;
+		animation: moveToLeft 0.6s ease-out;
+
+		@include responsive(mob) {
+			font-size: 3rem;
+			letter-spacing: 1rem;
+		}
+	}
+	&__meaning {
+		font-weight: 600;
+		font-size: 1.5rem;
+		letter-spacing: 1.3rem;
+		text-transform: uppercase;
+		animation: moveToRight 0.7s ease-out;
+
+		@include responsive(mob) {
+			font-size: 1.1rem;
+			letter-spacing: 0.9rem;
+		}
+	}
+	&__btn {
+		background-color: $whiteColor;
+		color: $color-grey-500;
+	}
+}

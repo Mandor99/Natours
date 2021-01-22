@@ -1,0 +1,25 @@
+section.tours#tours
+    .tours__wrapper-title
+        h2.tours__title.heading-animated most popular tours
+    section.cards
+        -const card1 = {title: "the sea explorer",days: "3",people: "30", guides: "2", sleep: "cozy hotel", difficult: "easy", price: "297"}
+        -const card2 = {title: "the forest hiker",days: "7",people: "40", guides: "6", sleep: "provided tens", difficult: "medium", price: "497"}
+        -const card3 = {title: "the snow adventure",days: "5",people: "15", guides: "3", sleep: "provided tens", difficult: "hard", price: "897"}
+        -const cards = [card1, card2, card3]
+        each card, index in cards
+            section.card
+                div.card__front
+                    figure.card__pic(class=`card__pic--${index + 1}`) &nbsp;
+                    h3.card__heading(class=`card__heading--${index + 1}`): span #{card.title}
+                    ul.card__offers
+                        li.card__offer #{card.days} days tours
+                        li.card__offer up to #{card.people} people
+                        li.card__offer #{card.guides} tours guides
+                        li.card__offer sleep in #{card.sleep}
+                        li.card__offer difficulty: #{card.difficult}
+                div.card__back(class=`card__back--${index + 1}`)
+                    p.card__kind only
+                    p.card__price $ #{card.price}
+                    .card__wrapper--link: a.btn.btn__animated.card__btn(href="#popup") book now
+
+    div.tours__wrapper--link: a(href="#", class="btn btn__animated tours__btn") discover all tours

@@ -1,0 +1,143 @@
+.nav {
+	$size: 4rem;
+
+	&__checkbox {
+		display: none;
+
+		&:checked ~ .nav__background {
+			transform: scale(80);
+		}
+
+		&:checked ~ .nav__wrapper {
+			width: 100%;
+			opacity: 1;
+		}
+
+		&:checked ~ .nav__toggler .nav__toggler--icon {
+			background: transparent;
+
+			&::before {
+				transform: rotate(135deg);
+				top: 0;
+			}
+
+			&::after {
+				transform: rotate(-135deg);
+				top: 0;
+			}
+		}
+	}
+
+	&__toggler {
+		width: $size + 1rem;
+		height: $size + 1rem;
+		border-radius: 50%;
+		box-shadow: $shadow-1;
+		background-color: $whiteColor;
+		position: fixed;
+		top: 4%;
+		right: 4%;
+		z-index: 200;
+		text-align: center;
+		cursor: pointer;
+
+		&:hover &--icon::before {
+			top: -1rem;
+		}
+
+		&:hover &--icon::after {
+			top: 1rem;
+		}
+
+		&--icon {
+			$w: 2.5rem;
+			$h: 2px;
+			width: $w;
+			height: $h;
+			background-color: $color-grey-700;
+			text-align: center;
+			display: inline-block;
+			position: relative;
+			margin-top: ($size + 1rem) /2;
+			transition: all 0.2s ease;
+
+			&::after,
+			&::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				width: $w;
+				height: $h;
+				background-color: $color-grey-700;
+				text-align: center;
+				display: inline-block;
+				transition: all 0.3s;
+			}
+			&::before {
+				top: -0.8rem;
+			}
+			&::after {
+				top: 0.8rem;
+			}
+		}
+	}
+
+	&__background {
+		width: $size;
+		height: $size;
+		border-radius: 50%;
+		background: radial-gradient($color-primary-light, $color-primary-dark);
+		position: fixed;
+		top: 5%;
+		right: 5%;
+		z-index: 100;
+		transition: all 0.5s ease;
+	}
+
+	&__wrapper {
+		height: 100vh;
+		width: 0;
+		opacity: 0;
+		position: fixed;
+		top: 0;
+		right: 0;
+		z-index: 150;
+		transition: all 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+	}
+
+	&__items {
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+
+	&__list {
+		margin: 1rem 0;
+	}
+
+	&__link {
+		display: inline-block;
+		text-transform: uppercase;
+		font-size: 2.5rem;
+		font-weight: 300;
+		padding: 0.3rem 0.7rem;
+		color: $whiteColor;
+		transition: all 0.4s ease;
+		background: linear-gradient(
+			120deg,
+			transparent 0%,
+			transparent 50%,
+			$whiteColor 50%
+		);
+		background-size: 230%;
+
+		&:hover {
+			color: $color-primary;
+			background-position: 100%;
+			transform: translateX(-1rem);
+		}
+	}
+}

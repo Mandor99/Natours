@@ -1,0 +1,74 @@
+.footer {
+	background-color: $color-grey-700;
+	color: $whiteColor;
+	padding: 8rem 0;
+
+	&__logo {
+		width: 10rem;
+		text-align: center;
+		margin: 0 auto 3rem;
+
+		@include responsive(tab) {
+			width: 15rem;
+		}
+	}
+
+	&__content {
+		display: flex;
+		justify-content: space-around;
+		gap: 6rem;
+		// justify-content: center;
+		margin: 0 3rem;
+		flex-wrap: wrap;
+
+		@include responsive(tab) {
+			flex-direction: column;
+		}
+
+		& > * {
+			border-top: 1px solid $color-grey-500;
+			padding-top: 1.5rem;
+		}
+	}
+
+	&__nav {
+		flex: 1;
+		display: flex;
+		justify-content: space-between;
+
+		@include responsive(mob) {
+			flex-direction: column;
+			gap: $margin-1;
+		}
+
+		&--item {
+			&-link {
+				width: 100%;
+			}
+		}
+	}
+
+	&__author {
+		flex-basis: 48%;
+
+		@include responsive(tab) {
+			flex: 1 1 auto;
+		}
+	}
+
+	&__link {
+		color: $whiteColor;
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 1.1rem;
+		cursor: pointer;
+		display: inline-block;
+		transition: all 0.3s ease;
+
+		&:hover {
+			transform: rotate(5deg) scale(1.1);
+			color: $color-primary;
+			box-shadow: $shadow-1;
+		}
+	}
+}
